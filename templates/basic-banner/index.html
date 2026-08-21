@@ -2,10 +2,152 @@
 <html lang="is">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Basic banner template</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .banner-shell {
+      width: 970px;
+      height: 250px;
+      transform-origin: top left;
+    }
+
+    .banner {
+      position: relative;
+      width: 970px;
+      height: 250px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #111;
+    }
+
+    .background {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .content-inner {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: intro 0.8s ease forwards;
+      animation-delay: 0.25s;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 48px;
+    }
+
+    p {
+      margin: 8px 0 0;
+      font-size: 22px;
+    }
+
+    @keyframes intro {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
-  Basic banner template
+
+  <div class="banner-shell" id="bannerShell">
+
+    <div class="banner" id="banner">
+
+      <!--
+      Þegar við erum komin með alvöru asset:
+      <img
+        src="assets/background.webp"
+        class="background"
+        alt=""
+      >
+      -->
+
+      <div class="content">
+        <div class="content-inner">
+          <h1>Harpa</h1>
+          <p>Basic HTML5 banner template</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const BASE_WIDTH = 970;
+    const BASE_HEIGHT = 250;
+
+    const bannerShell = document.getElementById("bannerShell");
+    const banner = document.getElementById("banner");
+
+    function resizeBanner() {
+      const availableWidth = window.innerWidth;
+
+      const scale = Math.min(
+        availableWidth / BASE_WIDTH,
+        1
+      );
+
+      bannerShell.style.transform = `scale(${scale})`;
+      bannerShell.style.width = `${BASE_WIDTH}px`;
+      bannerShell.style.height = `${BASE_HEIGHT}px`;
+
+      document.body.style.width = `${BASE_WIDTH * scale}px`;
+      document.body.style.height = `${BASE_HEIGHT * scale}px`;
+    }
+
+    resizeBanner();
+
+    window.addEventListener("resize", resizeBanner);
+
+    banner.addEventListener("click", function () {
+      window.open(
+        "https://www.harpa.is/",
+        "_blank",
+        "noopener,noreferrer"
+      );
+    });
+  </script>
+
 </body>
 </html>
