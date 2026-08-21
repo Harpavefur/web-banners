@@ -2,6 +2,22 @@
   "name": "Basic banner template",
   "width": 970,
   "height": 250,
+
+  "clickUrl": "https://www.harpa.is/",
+
+  "headline": "Harpa",
+  "text": "Basic HTML5 banner template",
+
+  "background": "",
+
+  "animation": "fade-up",
+  "interactive": true,
+
+  "status": "template"
+}{
+  "name": "Basic banner template",
+  "width": 970,
+  "height": 250,
   "clickUrl": "https://www.harpa.is/",
   "animation": true,
   "interactive": true,
