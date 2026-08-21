@@ -1,0 +1,9 @@
+{
+  "name": "Basic banner template",
+  "width": 970,
+  "height": 250,
+  "clickUrl": "https://www.harpa.is/",
+  "animation": true,
+  "interactive": true,
+  "status": "template"
+}
